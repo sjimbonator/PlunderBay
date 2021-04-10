@@ -3,6 +3,7 @@ import * as BABYLON from "@babylonjs/core";
 import { ShipState } from 'shared/models/shipState';
 import { ShipInput } from "shared/models/shipInput";
 import { ShipStateBuffer } from "../helpers/shipStateBuffer";
+import * as globalState from "../globals/globalState"
 
 export class ShipController { //implement interpolation
     protected shipMesh: BABYLON.TransformNode;
@@ -19,10 +20,8 @@ export class ShipController { //implement interpolation
         this.state = state;
         this.applyStateToMesh();
         this.interpolation = interpolation;
-        if (interpolation) {
-            this.interpolationPositionBuffer = new ShipStateBuffer();
-            this.interpolationPositionBuffer.addState(this.state);
-        }
+        this.interpolationPositionBuffer = new ShipStateBuffer();
+        this.interpolationPositionBuffer.addState(this.state);
     }
 
     protected applyStateToMesh() {
@@ -60,7 +59,7 @@ export class ShipController { //implement interpolation
     }
 
     public tick(deltaTime: number): void {
-        if (this.interpolation) {
+        if (this.interpolation && globalState.lerp) {
             this.state = this.interpolationPositionBuffer.getCurrentState();
             this.applyStateToMesh();
         }
@@ -70,7 +69,7 @@ export class ShipController { //implement interpolation
     }
 
     public setState(state: ShipState): void {
-        if (this.interpolation) {
+        if (this.interpolation && globalState.lerp) {
             this.interpolationPositionBuffer.addState(state); // Add state to buffer if interpolation is on.
         }
         else {

@@ -14,7 +14,7 @@ export class ShipStateBuffer {
 
     public getCurrentState(): ShipState {
         const now = new Date().getTime();
-        const serverTickTime = (1000 / 20);
+        const serverTickTime = (1000 / 3);
         const renderTimeStamp = now - serverTickTime;
         const buffer = this.positionList;
 

@@ -8,7 +8,7 @@ const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 app.set("port", process.env.PORT || 3000);
-const ticks = 20; //Ticks per second
+const ticks = 3; //Ticks per second
 const msPerTick = 1000 / ticks;
 let tickNr = 1;
 app.get("/", (req, res) => {

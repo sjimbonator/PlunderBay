@@ -10,7 +10,7 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 
 app.set("port", process.env.PORT || 3000);
-const ticks: number = 20; //Ticks per second
+const ticks: number = 3; //Ticks per second
 
 const msPerTick: number = 1000 / ticks;
 let tickNr: number = 1;
