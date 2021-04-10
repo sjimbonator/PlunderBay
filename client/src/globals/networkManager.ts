@@ -10,7 +10,7 @@ export class NetworkManager {
     private lastId: string;
 
     private constructor() {
-        this.socket = socketIo.connect(serverIp);
+        this.socket = socketIo.connect();
         this.socket.on('playerIdSet', (id: string) => { this.lastId = id; });
     }
 
