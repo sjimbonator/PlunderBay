@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "buildServer": "cd server && tsc",
-    "buildClient": "cd client && npx webpack",
+    "buildServer": "cd server && npm install && tsc",
+    "buildClient": "cd client && npm install && npx webpack",
     "start": "npm run buildServer && npm run buildClient && node server/dist/server/src/server.js"
   },
   "repository": {
