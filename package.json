@@ -1,13 +1,11 @@
 {
   "name": "forkedplunderbay",
   "version": "1.0.0",
-  "description": "* Open server directory\r ```cd server```\r * Install dependencies\r ```npm install```\r * Run server\r ```npm run dev```",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "buildServer": "cd server && npm install && tsc",
-    "buildClient": "cd client && npm install && npx webpack",
-    "start": "npm run buildServer && npm run buildClient && node server/dist/server/src/server.js"
+    "start": "node server/dist/server/src/server.js"
   },
   "repository": {
     "type": "git",
