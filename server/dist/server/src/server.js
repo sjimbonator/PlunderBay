@@ -45,7 +45,7 @@ setInterval(() => {
     io.to(gameroom.getName()).emit('worldStateUpdate', gameroom.getWorldUpdateJSON());
     tickNr++;
 }, msPerTick);
-const server = http.listen(3000, function () {
-    console.log("listening on *:3000");
+const server = http.listen(process.env.PORT || 3000, function () {
+    console.log("listening on *:" + process.env.PORT);
 });
 //# sourceMappingURL=server.js.map
