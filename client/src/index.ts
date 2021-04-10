@@ -20,7 +20,9 @@ light.intensity = 0.4;
 const material = new BABYLON.StandardMaterial("water", scene);
 material.emissiveColor = new BABYLON.Color3(0, 0, 1);
 
-BABYLON.SceneLoader.LoadAssetContainer(assetsFolderPath, sloopModelFileName, scene, (assets) => {
+window.onload = () => {
+    
+    BABYLON.SceneLoader.LoadAssetContainer(assetsFolderPath, sloopModelFileName, scene, (assets) => {
     const camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(70, 70, 70), scene);
     camera.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
     const distance = 100;
@@ -66,3 +68,5 @@ BABYLON.SceneLoader.LoadAssetContainer(assetsFolderPath, sloopModelFileName, sce
     });
 
 });
+};
+
