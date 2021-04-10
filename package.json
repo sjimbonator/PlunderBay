@@ -1,0 +1,22 @@
+{
+  "name": "forkedplunderbay",
+  "version": "1.0.0",
+  "description": "* Open server directory\r ```cd server```\r * Install dependencies\r ```npm install```\r * Run server\r ```npm run dev```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildServer": "cd server && tsc",
+    "buildClient": "cd client && npx webpack",
+    "start": "npm run buildServer && npm run buildClient && node server/dist/server/src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjimbonator/PlunderBay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjimbonator/PlunderBay/issues"
+  },
+  "homepage": "https://github.com/sjimbonator/PlunderBay#readme"
+}

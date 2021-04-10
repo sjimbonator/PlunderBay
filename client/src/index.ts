@@ -9,8 +9,8 @@ import { WorldController } from "./controllers/worldController";
 import * as globalState from "./globals/globalState"
 import { NetworkManager } from "./globals/networkManager";
 
-const assetsFolderPath = "../assets/";
-const sloopModelFileName = "ship-PLACEHOLDER-v7 (canon animation test).gltf";
+const assetsFolderPath = "/";
+const sloopModelFileName = "test.gltf";
 
 const canvas = document.getElementById("renderCanvas") as HTMLCanvasElement;
 const engine = new BABYLON.Engine(canvas);

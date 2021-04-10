@@ -16,7 +16,15 @@ const msPerTick: number = 1000 / ticks;
 let tickNr: number = 1;
 
 app.get("/", (req: any, res: any) => {
-  res.sendFile(path.resolve("./index.html"));
+  res.sendFile(path.resolve("./client/index.html"));
+});
+
+app.get("/main.js", (req: any, res: any) => {
+  res.sendFile(path.resolve("./client/dist/main.js"));
+});
+
+app.get("/test.gltf", (req: any, res: any) => {
+  res.sendFile(path.resolve("./client/dist/test.gltf"));
 });
 
 let gameroom: GameRoom = new GameRoom("game1");

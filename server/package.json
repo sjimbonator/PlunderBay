@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/index.js",
+    "build": "tsc",
+    "start": "npm run build && node dist/server/src/server.js",
     "dev": "nodemon"
   },
   "author": "",

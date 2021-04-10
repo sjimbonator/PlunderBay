@@ -1,38 +1,31 @@
-import { WorldState } from '../../shared/models/worldState'
-import { ClientUpdate } from '../../shared/models/clientUpdate'
-import * as shiptypes from './shiptypes';
-
-export class GameRoom {
-    private name: string;
-    private world: WorldState;
-    private idToSocket: Map<string, any>;
-
-    constructor(name: string) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GameRoom = void 0;
+const worldState_1 = require("../../shared/models/worldState");
+const shiptypes = require("./shiptypes");
+class GameRoom {
+    constructor(name) {
         this.name = name;
-        this.world = WorldState.empty();
+        this.world = worldState_1.WorldState.empty();
         this.idToSocket = new Map();
     }
-
-    getName(): string {
+    getName() {
         return this.name;
     }
-    removePlayer(playerID: string): void {
+    removePlayer(playerID) {
         this.world.ships.delete(playerID);
     }
-
-    spawnShip(playerID: string, socket: any): void {
+    spawnShip(playerID, socket) {
         this.idToSocket.set(playerID, socket);
         let playerShip = shiptypes.getSloop();
         //ToDo: add random spawn location
         this.world.ships.set(playerID, playerShip);
     }
-
-    removeShip(playerId: string): void {
+    removeShip(playerId) {
         this.world.ships.delete(playerId);
         this.idToSocket.delete(playerId);
     }
-
-    applyClientUpdate(update: ClientUpdate): void {
+    applyClientUpdate(update) {
         if (this.world.ships.has(update.id)) {
             let ship = this.world.ships.get(update.id);
             ship.lastProcessedInput = update.requestNr;
@@ -40,15 +33,19 @@ export class GameRoom {
             ship.x += update.input.xMovement;
             ship.z += update.input.zMovement;
             ship.currentRotation += update.input.rotationMovement;
-            const maxRadial: number = Math.PI * 2;
-            if (ship.currentRotation > maxRadial) { ship.currentRotation = 0 }
-            if (ship.currentRotation < 0) { ship.currentRotation = maxRadial }
+            const maxRadial = Math.PI * 2;
+            if (ship.currentRotation > maxRadial) {
+                ship.currentRotation = 0;
+            }
+            if (ship.currentRotation < 0) {
+                ship.currentRotation = maxRadial;
+            }
             this.world.ships.set(update.id, ship);
         }
     }
-
-    getWorldUpdateJSON(): string {
+    getWorldUpdateJSON() {
         return this.world.toJSON();
     }
-
 }
+exports.GameRoom = GameRoom;
+//# sourceMappingURL=gameRoom.js.map
